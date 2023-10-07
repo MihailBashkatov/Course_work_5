@@ -1,6 +1,6 @@
 import psycopg2
 
-from script.config import config
+from script.config import config, db_name
 
 
 class DBManager:
@@ -14,7 +14,9 @@ class DBManager:
 
         # Parameters configuration
         params = config()
-        # params = {'host': 'localhost', 'user': 'postgres', 'password': '12345', 'port': '5432', 'dbname': 'hh_api'}
+
+        # Adding to params new SQL database
+        params['dbname'] = db_name
 
         try:
             # Connection to new database

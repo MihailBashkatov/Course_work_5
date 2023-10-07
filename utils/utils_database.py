@@ -88,20 +88,20 @@ def insert_vacancies_data(cur, chosen_employer: list[dict]) -> None:
     """ Populating data to table vacancies from list of dicts."""
 
     for vacancy in chosen_employer:
-        vacancy_id = vacancy['id']
-        employer_id = vacancy['employer']['id']
-        name = vacancy["name"]
-        city = vacancy["area"]["name"]
-        description = vacancy["snippet"]["responsibility"]
-        salary_from = vacancy["salary"]["from"]
+        vacancy_id: str = vacancy['id']
+        employer_id: str = vacancy['employer']['id']
+        name: str = vacancy["name"]
+        city: str = vacancy["area"]["name"]
+        description: str = vacancy["snippet"]["responsibility"]
+        salary_from: int = vacancy["salary"]["from"]
 
         # Converting salary value to integer
         if type(salary_from) == str:
-            salary_from = 0
-        salary_to = vacancy["salary"]["to"]
+            salary_from: int = 0
+        salary_to: int = vacancy["salary"]["to"]
         if type(salary_to) == str:
-            salary_to = 0
-        vacancy_url = vacancy['alternate_url']
+            salary_to: int = 0
+        vacancy_url: str = vacancy['alternate_url']
 
         cur.execute(""" INSERT INTO vacancies 
                             (
